@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomerService } from "@codacious-nx-demo/data-access";
 
 @Component({
   selector: 'codacious-nx-demo-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-ui';
+
+  customer = this.customerService.getCurrent();
+  constructor(private customerService: CustomerService) {
+
+  }
 }

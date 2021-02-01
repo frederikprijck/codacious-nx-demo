@@ -6,5 +6,7 @@ module.exports = {
     '<rootDir>/libs/data-access',
     '<rootDir>/libs/booking',
     '<rootDir>/libs/checkin',
+    '<rootDir>/apps/awesome',
+    '<rootDir>/libs/awesome-feat-lib',
   ],
 };

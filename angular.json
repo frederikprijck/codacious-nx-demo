@@ -256,6 +256,145 @@
           }
         }
       }
+    },
+    "awesome": {
+      "projectType": "application",
+      "root": "apps/awesome",
+      "sourceRoot": "apps/awesome/src",
+      "prefix": "codacious-nx-demo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/awesome",
+            "index": "apps/awesome/src/index.html",
+            "main": "apps/awesome/src/main.ts",
+            "polyfills": "apps/awesome/src/polyfills.ts",
+            "tsConfig": "apps/awesome/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/awesome/src/favicon.ico",
+              "apps/awesome/src/assets"
+            ],
+            "styles": ["apps/awesome/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/awesome/src/environments/environment.ts",
+                  "with": "apps/awesome/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "awesome:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "awesome:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "awesome:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/awesome/src/**/*.ts",
+              "apps/awesome/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/awesome"],
+          "options": {
+            "jestConfig": "apps/awesome/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "awesome-e2e": {
+      "root": "apps/awesome-e2e",
+      "sourceRoot": "apps/awesome-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/awesome-e2e/cypress.json",
+            "tsConfig": "apps/awesome-e2e/tsconfig.e2e.json",
+            "devServerTarget": "awesome:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "awesome:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/awesome-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "awesome-feat-lib": {
+      "projectType": "library",
+      "root": "libs/awesome-feat-lib",
+      "sourceRoot": "libs/awesome-feat-lib/src",
+      "prefix": "codacious-nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/awesome-feat-lib/src/**/*.ts",
+              "libs/awesome-feat-lib/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/awesome-feat-lib"],
+          "options": {
+            "jestConfig": "libs/awesome-feat-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

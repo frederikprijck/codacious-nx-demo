@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ui-header',
@@ -13,15 +13,7 @@ import { Component, Input } from '@angular/core';
       </nav>
       <a class="btn btn-outline-primary" href="#">Contact</a>
     </div>
-  `,
-  styles: [
-    `
-      :host {
-      }
-    `,
-  ],
+  `
 })
 export class HeaderComponent {
-  @Input()
-  username: string;
 }

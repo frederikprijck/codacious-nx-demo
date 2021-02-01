@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { log } from '@codacious-nx-demo/utils';
 
 @Component({
   selector: 'checking',
@@ -17,4 +19,16 @@ import { Component } from '@angular/core';
     `
   ]
 })
-export class CheckinComponent {}
+export class CheckinComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      bookingNumber: ''
+    });
+  }
+
+  submit(data) {
+    log(data);
+  }
+}

@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { UiModule } from '@codacious-nx-demo/ui';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
@@ -25,8 +25,7 @@ import { UiModule } from '@codacious-nx-demo/ui';
         redirectTo: '/booking',
         pathMatch: 'full'
       }
-    ]),
-    UiModule
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent],

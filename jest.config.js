@@ -6,5 +6,7 @@ module.exports = {
     '<rootDir>/libs/data-access',
     '<rootDir>/libs/booking',
     '<rootDir>/libs/checkin',
+    '<rootDir>/apps/demo-feat',
+    '<rootDir>/libs/demo-lib',
   ],
 };

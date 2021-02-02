@@ -256,6 +256,145 @@
           }
         }
       }
+    },
+    "demo-feat": {
+      "projectType": "application",
+      "root": "apps/demo-feat",
+      "sourceRoot": "apps/demo-feat/src",
+      "prefix": "codacious-nx-demo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/demo-feat",
+            "index": "apps/demo-feat/src/index.html",
+            "main": "apps/demo-feat/src/main.ts",
+            "polyfills": "apps/demo-feat/src/polyfills.ts",
+            "tsConfig": "apps/demo-feat/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/demo-feat/src/favicon.ico",
+              "apps/demo-feat/src/assets"
+            ],
+            "styles": ["apps/demo-feat/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/demo-feat/src/environments/environment.ts",
+                  "with": "apps/demo-feat/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "demo-feat:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "demo-feat:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "demo-feat:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/demo-feat/src/**/*.ts",
+              "apps/demo-feat/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/demo-feat"],
+          "options": {
+            "jestConfig": "apps/demo-feat/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-feat-e2e": {
+      "root": "apps/demo-feat-e2e",
+      "sourceRoot": "apps/demo-feat-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/demo-feat-e2e/cypress.json",
+            "tsConfig": "apps/demo-feat-e2e/tsconfig.e2e.json",
+            "devServerTarget": "demo-feat:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "demo-feat:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/demo-feat-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "demo-lib": {
+      "projectType": "library",
+      "root": "libs/demo-lib",
+      "sourceRoot": "libs/demo-lib/src",
+      "prefix": "codacious-nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/demo-lib/src/**/*.ts",
+              "libs/demo-lib/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/demo-lib"],
+          "options": {
+            "jestConfig": "libs/demo-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

@@ -22,6 +22,9 @@
     "utils": { "tags": [] },
     "data-access": { "tags": [] },
     "booking": { "tags": [] },
-    "checkin": { "tags": [] }
+    "checkin": { "tags": [] },
+    "demo-feat": { "tags": [] },
+    "demo-feat-e2e": { "tags": [], "implicitDependencies": ["demo-feat"] },
+    "demo-lib": { "tags": [] }
   }
 }
